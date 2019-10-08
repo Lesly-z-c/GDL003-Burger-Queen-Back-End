@@ -48,18 +48,18 @@ exports.findOne = (req, res) => {
     .then(menu => {
         if(!menu) {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.menuSpaceId
+                message: "Menu not found with id " + req.params.menuSpaceId
             });            
         }
         res.send(menu);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.menuSpaceId
+                message: "Menu not found with id " + req.params.menuSpaceId
             });                
         }
         return res.status(500).send({
-            message: "Error retrieving note with id " + req.params.menuSpaceId
+            message: "Error retrieving menu with id " + req.params.menuSpaceId
         });
     });
 };
@@ -84,18 +84,18 @@ exports.update = (req, res) => {
     .then(menu => {
         if(!menu) {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.menuSpaceId
+                message: "Menu not found with id " + req.params.menuSpaceId
             });
         }
         res.send(menu);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.menuSpaceId
+                message: "Menu not found with id " + req.params.menuSpaceId
             });                
         }
         return res.status(500).send({
-            message: "Error updating note with id " + req.params.menuId
+            message: "Error updating menu with id " + req.params.menuId
         });
     });
 };
@@ -106,18 +106,18 @@ exports.delete = (req, res) => {
     .then(menu => {
         if(!menu) {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.menuId
+                message: "Menu not found with id " + req.params.menuId
             });
         }
-        res.send({message: "Note deleted successfully!"});
+        res.send({message: "Menu deleted successfully!"});
     }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.menuId
+                message: "Menu not found with id " + req.params.menuId
             });                
         }
         return res.status(500).send({
-            message: "Could not delete note with id " + req.params.menuId
+            message: "Could not delete menu with id " + req.params.menuId
         });
     });
 };
