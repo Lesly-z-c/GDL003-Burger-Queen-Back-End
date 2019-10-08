@@ -1,36 +1,39 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const mongoose = require('mongoose');  // Cargamos el módulo de mongoose para poder conectarnos a MongoDB
 //const port = 3000;  //Indica el puerto en el que va a funcionar el servidor 
 
 //Settings     //Ajustes
 app.set('port', process.env.PORT || 3000);
 app.set ('json spaces', 2);
 
-//const dbConfig = require('./config/config-database.js'); // Configuramos la base de datos
-//const mongoose = require('mongoose');  // Cargamos el módulo de mongoose para poder conectarnos a MongoDB
+const dbConfig = require('./config/config-database.js'); // Configuramos la base de datos
 
 //Middlewares     // Configuramos bodyParser para que convierta el body de nuestras peticiones a JSON
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//mongoose.Promise = global.Promise;
+// Route  //Rutas
+require('./routes/menu-routes.js')(app);
+//app.use(require('./routes/menu-routes.js'));
 
-/* Connecting to the database //Conectando a la base de datos
-mongoose.connect(dbConfig.url, {useNewUrlParser: true}, {useUnifiedTopology: true} )
+mongoose.Promise = global.Promise;
+
+// Connecting to the database //Conectando a la base de datos
+//mongoose.connect(dbConfig.url, {useUnifiedTopology: true})
+//mongoose.connect(dbConfig.url, {useNewUrlParser: true})
+mongoose.connect(dbConfig.url, {useNewUrlParser: true, useUnifiedTopology: true})
+//mongoose.connect('mongodb://localhost:27017/', {useNewUrlParser: true},{useUnifiedTopology: true})
 .then(() => {
     console.log("Successfully connected to the database");    
     //console.log('La conexión a MongoDB se ha realizado correctamente!!'); // Conexión realizada
 })
 .catch(err => {
-    console.log('Could not connect to the database. Exiting now...', err);
+    console.log('Could not connect to the database. Now...', err);
   //  process.exit();
 });
-*/
 
-// Route  //Rutas
-//require('./routes/menu-routes.js')(app);
-app.use(require('./routes/menu-routes.js'));
 
 //Starting the server  //Crear el servidor Web Nodejs
 app.listen(app.get('port'), () => console.log(`Example app listening on port ${app.get('port')}!`))

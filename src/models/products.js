@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
  
 // Creamos el objeto del esquema
-var menuSchema = Schema({
+var orderSchema = Schema({
     name: String,
     price: String,
     image: String,
@@ -16,4 +16,4 @@ var menuSchema = Schema({
 });
  
 // Exportamos el modelo para usarlo en otros ficheros
-module.exports = mongoose.model('Menu', NotaSchema);
+module.exports = mongoose.model('Orders', OrderSchema);

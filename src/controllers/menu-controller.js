@@ -4,15 +4,15 @@ const Menu = require('../models/menu-models.js');
 // Create and Save a new menu item
 exports.create = (req, res) => {
     // Validate request
-    if(!req.body.content) {
+    if(!req.body.name) {
         return res.status(400).send({
-            message: "item Menu content can not be empty"
+            message: "item Menu can not be empty"
         });
     }
 
-    // Create a Note
+    // Create a Menu
     const menu = new Menu({
-        name: req.body.name || "Unname item Menu", 
+        name: req.body.name, 
         price: req.body.price,
         image: req.body.image,
         description: req.body.description,
@@ -87,7 +87,7 @@ exports.update = (req, res) => {
                 message: "Note not found with id " + req.params.menuSpaceId
             });
         }
-        res.send(menu;
+        res.send(menu);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({

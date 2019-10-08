@@ -9,11 +9,10 @@ var Schema = mongoose.Schema;
 // Creamos el objeto del esquema
 var menuSchema = Schema({
     name: String,
-    price: String,
+    price: Number,
     image: String,
     description: String,
-    type: String,
-    id: Number,
+    type: String
 }, {
     timestamps: true
 });
