@@ -21,13 +21,12 @@ require('./routes/menu-routes.js')(app);
 mongoose.Promise = global.Promise;
 
 // Connecting to the database //Conectando a la base de datos
-//mongoose.connect(dbConfig.url, {useUnifiedTopology: true})
-//mongoose.connect(dbConfig.url, {useNewUrlParser: true})
-mongoose.connect(dbConfig.url, {useNewUrlParser: true, useUnifiedTopology: true})
-//mongoose.connect('mongodb://localhost:27017/', {useNewUrlParser: true},{useUnifiedTopology: true})
+//mongoose.connect(dbConfig.url, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://localhost:27017/menuSpace', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     console.log("Successfully connected to the database");    
-    //console.log('La conexión a MongoDB se ha realizado correctamente!!'); // Conexión realizada
+
+
 })
 .catch(err => {
     console.log('Could not connect to the database. Now...', err);
