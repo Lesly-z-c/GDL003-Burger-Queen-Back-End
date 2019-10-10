@@ -22,7 +22,7 @@ mongoose.Promise = global.Promise;
 
 // Connecting to the database //Conectando a la base de datos
 //mongoose.connect(dbConfig.url, {useNewUrlParser: true, useUnifiedTopology: true})
-mongoose.connect('mongodb://172.17.30.165:27017/menuSpace', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(dbConfig.url, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     console.log("Successfully connected to the database");    
 
