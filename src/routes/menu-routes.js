@@ -1,18 +1,18 @@
 module.exports = (app) => {
     const menuSpace = require('../controllers/menu-controller.js');
 
-    // Create a new Note
+    // Create a new Menu
     app.post('/menuSpace', menuSpace.create);
 
-    // Retrieve all Notes
+    // Retrieve all Menu
     app.get('/menuSpace', menuSpace.findAll);
 
-    // Retrieve a single Note with noteId
+    // Retrieve an item with menuId
     app.get('/menuSpace/:menuSpaceId', menuSpace.findOne);
 
-    // Update a Note with noteId
+    // Update an item with menuId
     app.put('/menuSpace/:menuSpaceId', menuSpace.update);
 
-    // Delete a Note with noteId
+    // Delete an  item with menuId
     app.delete('/menuSpace/:menuSpaceId', menuSpace.delete);
 }

@@ -8,11 +8,10 @@ var Schema = mongoose.Schema;
  
 // Creamos el objeto del esquema
 var orderSchema = Schema({
+    order: Integer,
+    quantity: Number,
     name: String,
-    price: String,
-    image: String,
-    description: String,
-    id: Number,
+
 });
  
 // Exportamos el modelo para usarlo en otros ficheros
